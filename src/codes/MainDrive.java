@@ -7,17 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-import com.sun.xml.internal.ws.Closeable;
-
 import codes.datas.User;
-import sun.awt.FwDispatcher;
 
 public class MainDrive {
 
+//	불러온 연락처 목록을 저장할 ArrayList
+//	static 메소드에서도 사용하려고 static 키워드 첨부.
+	static List<User> myUserList = new ArrayList<>();
+	
 	public static void main(String[] args) {
 
 //		Git과 연동해서 전화번호부 만들 예정
@@ -69,6 +70,11 @@ public class MainDrive {
 
 //	파일에 저장된 전화번호 목록 출력
 	public static void readAllPhoneNum() {
+		
+//		파일에서 내 연락처를 불러올 예정.
+//		myUserList에 이미 연락처 데이터가 불러져 있는 상황이라면
+//		[전부 다 지우고] 다시 불러오게 하자
+		myUserList.clear();
 
 //		파일에 저장된 데이터 -> 자바 프로그램에서 활용. (File INPUT)
 //		FileReader / BufferedReader 활용.
@@ -89,7 +95,7 @@ public class MainDrive {
 			
 			while (true) {
 				
-//				한줄을 통째로 불러오기.
+//				한줄을 통째로 불러오기.=> IOException 처리 필요
 				String line = br.readLine();
 				
 //				불러온 내용 null인지 검사.
@@ -124,8 +130,12 @@ public class MainDrive {
 //				이름 /폰번/ 나이를 가지고 -> User 객체로 만들자.
 				User user = new User(userName, userPhoneNum, userBirthYear);
 				
-//				만들어낸 user를 출력. -> user 클래스의 tostring 오버라이딩해서 제대로된 양식으로 가공하자.
+//				만들어낸 user를 출력. -> user 클래스의 toString 오버라이딩해서 제대로된 양식으로 가공하자.
 				System.out.println(user);
+				
+//				멤버변수로 만든 내 연락처 목록에 user 변수를 추가.
+				myUserList.add(user);
+				
 			}
 			
 //			while 빠져나옴 : 파일을 다 읽었으니 빠져나왔다.
@@ -145,6 +155,11 @@ public class MainDrive {
 			System.out.println("연락처를 읽어오는 중에 문제가 발생했습니다.");
 			e.printStackTrace();
 		}
+		
+//		내 사용자 목록에 모든 연락처가 추가된 상황.
+//		몇명이 저장되어 있는지 출력.
+		
+		System.out.println(String.format("저장된 연락처 갯수 : %d개", myUserList.size()));
 		
 	}
 
