@@ -32,6 +32,24 @@ public class MainDrive {
 			System.out.println("메뉴 선택 : ");
 			int inputMenu = myScan.nextInt();
 			
+//			입력값 확인
+			if(inputMenu == 0) {
+//				프로그램 종료 해야함. => 무한반복 탈출.
+				System.out.println("전화번호부를 종료합니다..");
+				break;
+			}
+			else if (inputMenu ==1) {
+//				전화번호 추가 기능 구현 필요
+				}
+			else if (inputMenu ==2) {
+//				전화번호 전체 조회 기능 구현 필요
+			}
+			else {
+//				0,1,2 외의 값이 들어온 경우 대응.
+				System.out.println("잘못된 입력입니다.");
+				System.out.println("다시 입력해주세요.");
+				}
+			
 			
 		}
 		
