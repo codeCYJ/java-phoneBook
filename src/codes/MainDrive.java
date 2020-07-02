@@ -2,6 +2,8 @@ package codes;
 
 import java.util.Scanner;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 public class MainDrive {
 
 	public static void main(String[] args) {
@@ -29,7 +31,7 @@ public class MainDrive {
 			System.out.println("=====================");
 			
 //			실제 메뉴 입력받기					
-			System.out.println("메뉴 선택 : ");
+			System.out.print("메뉴 선택 : ");
 			int inputMenu = myScan.nextInt();
 			
 //			입력값 확인
@@ -39,7 +41,8 @@ public class MainDrive {
 				break;
 			}
 			else if (inputMenu ==1) {
-//				전화번호 추가 기능 구현 필요
+//				전화번호 등록 기능 실행
+				addPhoneNumToFile();
 				}
 			else if (inputMenu ==2) {
 //				전화번호 전체 조회 기능 구현 필요
@@ -55,4 +58,29 @@ public class MainDrive {
 		
 		
 	}
+	
+	
+//	전화번호 + 이름 + 생년 정보 저장 기능.
+	public static void addPhoneNumToFile() {
+		
+//		저장할 데이터를 입력 받자.
+		Scanner myScan = new Scanner(System.in);
+		
+//		이름(String) -> 폰번(String) -> 생년(메모)(int) 순서대로 저장.
+		
+		System.out.print("이름 입력 : ");
+		String name = myScan.nextLine();  // String 은 Line으로 입력받자
+		
+		System.out.print("전화번호 입력: ");
+		String phoneNum = myScan.nextLine();
+		
+		System.out.print("생년 입력 : ");
+		int birthYear = myScan.nextInt();
+		
+//		변수에 저장한 데이터를 묶어서 파일로 저장.
+//		JAVA -> 보조기억장치로 내보내기 -> 파일 출력 (SAVE)
+		
+		
+	}
+	
 }
