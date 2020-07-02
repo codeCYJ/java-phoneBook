@@ -13,6 +13,7 @@ import java.util.Scanner;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 import com.sun.xml.internal.ws.Closeable;
 
+import codes.datas.User;
 import sun.awt.FwDispatcher;
 
 public class MainDrive {
@@ -119,18 +120,12 @@ public class MainDrive {
 //				나이 : 생년을 저장하고 계산.
 //				String을 int로 변환해야 한다. -> Wrapper클래스 (Integer 활용)
 				int userBirthYear = Integer.parseInt(userInfos[2]);
+			
+//				이름 /폰번/ 나이를 가지고 -> User 객체로 만들자.
+				User user = new User(userName, userPhoneNum, userBirthYear);
 				
-//				생년을 나이로 변환.-> 매년 정확한 나이가 나오도록.
-				
-				Calendar now = Calendar.getInstance();
-						
-//				년도를 -> 현재 날짜에서  get(Calenade.Year)로 봅아내자.
-				int userAge = now.get(Calendar.YEAR)-userBirthYear+1;
-				
-//				세개의 데이터를 가지고 양식을 가공 (String.format)
-				String userInfoMessage = String.format("%s(%d세) : %s", userName, userAge, userPhoneNum);
-				
-				System.out.println(userInfoMessage);
+//				만들어낸 user를 출력. -> user 클래스의 tostring 오버라이딩해서 제대로된 양식으로 가공하자.
+				System.out.println(user);
 			}
 			
 //			while 빠져나옴 : 파일을 다 읽었으니 빠져나왔다.
